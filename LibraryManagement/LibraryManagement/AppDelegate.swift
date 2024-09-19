@@ -15,28 +15,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let crimeAndPunishment = Book(name: "Crime And Punishment", bookType: BookType.crime)
-        let prideAndPrejudice = Book(name: "Pride And Prejudice", bookType: BookType.romance)
-                
-        let library_ist = Library(books: [crimeAndPunishment, prideAndPrejudice])
+        let crimeAndPunishment = Book(name: "Crime And Punishment", bookType: BookType.crime, pageCount: 100)
+        let prideAndPrejudice = Book(name: "Pride And Prejudice", bookType: BookType.romance, pageCount: 200)
+        
+        
+        
+        let istanbul = Library(books: [crimeAndPunishment, prideAndPrejudice])
                
-        let ofMiceAndMen = Book(name: "Of Mice And Men", bookType: BookType.novel)
-        let ofMiceAndMen2 = Book(name: "Of Mice And Men2", bookType: BookType.novel)
+        let ofMiceAndMen = Book(name: "Of Mice And Men", bookType: BookType.novel, pageCount: 10)
+        let ofMiceAndMen2 = Book(name: "Of Mice And Men2", bookType: BookType.novel, pageCount: 20)
                 
+        let cansu = Member(name: "CANSU")
                 
-        library_ist.addBook(book: ofMiceAndMen)
-        library_ist.beMember(memberName: "cansu")
-        //library_ist.borrowBook(bookName: <#T##String#>, memberName: <#T##String#>)
+        istanbul.addBook(book: ofMiceAndMen)
+        istanbul.addBook(book: ofMiceAndMen2)
+        
+        istanbul.beMember(member: cansu)
+        
                 
-        for member in library_ist.members {
-            print(member)
-        }
+        istanbul.borrowBook(book: crimeAndPunishment, member: cansu)
+        istanbul.borrowBook(book: prideAndPrejudice, member: cansu)
+        istanbul.borrowBook(book: ofMiceAndMen, member: cansu)
+        istanbul.borrowBook(book: ofMiceAndMen2, member: cansu)
                 
-        library_ist.borrowBook2(book: crimeAndPunishment, member: "cansu")
-        library_ist.borrowBook2(book: prideAndPrejudice, member: "cansu")
-        library_ist.borrowBook2(book: ofMiceAndMen, member: "cansu")
-        library_ist.borrowBook2(book: ofMiceAndMen2, member: "cansu")
-                
+   
         return true
     }
 

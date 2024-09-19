@@ -8,5 +8,5 @@
 import Foundation
 
 enum BookType {
-    case self_development, crime, romance, novel
+    case selfDevelopment, crime, romance, novel
 }
